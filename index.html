@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-03-19 Tue 12:26 -->
+<!-- 2024-03-20 Wed 11:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mortgage Markets</title>
@@ -24,15 +24,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4f4efce">1. Fixed-Rate Mortgages</a></li>
-<li><a href="#org632a733">2. Agency and Government Sponsored Entity Mortgage Pools</a></li>
-<li><a href="#orgdbb4b2d">3. Commercial Mortgages</a></li>
-<li><a href="#orge37286e">4. FRED Mortgage Data</a>
+<li><a href="#org2afa11a">1. Fixed-Rate Mortgages</a></li>
+<li><a href="#org4ee4118">2. Agency and Government Sponsored Entity Mortgage Pools</a></li>
+<li><a href="#orga1c102d">3. Commercial Mortgages</a></li>
+<li><a href="#orge1fc840">4. FRED Mortgage Data</a>
 <ul>
-<li><a href="#orgbf3fd43">4.1. Delinquency</a></li>
+<li><a href="#orgac7b7ce">4.1. Delinquency</a></li>
 </ul>
 </li>
-<li><a href="#org73c351e">5. CMOs</a></li>
+<li><a href="#orgf53d7aa">5. Mortgage Risk</a>
+<ul>
+<li><a href="#orgd6d5baa">5.1. Interest Rate Risk</a></li>
+<li><a href="#org1e50a9c">5.2. Default Risk</a></li>
+<li><a href="#orgc231747">5.3. Prepayment Risk</a></li>
+</ul>
+</li>
+<li><a href="#org1039014">6. Mortgage Backed Securities</a>
+<ul>
+<li><a href="#org3b7c76e">6.1. CMOs</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -52,20 +63,20 @@ The majority of which is 1-4 Family Residential Mortgages:
 
 <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1iykn&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
 
-<div id="outline-container-org4f4efce" class="outline-2">
-<h2 id="org4f4efce"><span class="section-number-2">1.</span> Fixed-Rate Mortgages</h2>
+<div id="outline-container-org2afa11a" class="outline-2">
+<h2 id="org2afa11a"><span class="section-number-2">1.</span> Fixed-Rate Mortgages</h2>
 </div>
 
 
-<div id="outline-container-org632a733" class="outline-2">
-<h2 id="org632a733"><span class="section-number-2">2.</span> Agency and Government Sponsored Entity Mortgage Pools</h2>
+<div id="outline-container-org4ee4118" class="outline-2">
+<h2 id="org4ee4118"><span class="section-number-2">2.</span> Agency and Government Sponsored Entity Mortgage Pools</h2>
 <div class="outline-text-2" id="text-2">
 <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1iyoj&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
 </div>
 </div>
 
-<div id="outline-container-orgdbb4b2d" class="outline-2">
-<h2 id="orgdbb4b2d"><span class="section-number-2">3.</span> Commercial Mortgages</h2>
+<div id="outline-container-orga1c102d" class="outline-2">
+<h2 id="orga1c102d"><span class="section-number-2">3.</span> Commercial Mortgages</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 The purchase or building of Commercial Properties (such as office buildings) can be financed through mortgages as well.  
@@ -76,35 +87,64 @@ The purchase or building of Commercial Properties (such as office buildings) can
 </div>
 
 
-<div id="outline-container-orge37286e" class="outline-2">
-<h2 id="orge37286e"><span class="section-number-2">4.</span> FRED Mortgage Data</h2>
+<div id="outline-container-orge1fc840" class="outline-2">
+<h2 id="orge1fc840"><span class="section-number-2">4.</span> FRED Mortgage Data</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 <a href="https://fred.stlouisfed.org/tags/series?t=mortgage">All series matching "mortgage" are here.</a>
 </p>
 </div>
 
-<div id="outline-container-orgbf3fd43" class="outline-3">
-<h3 id="orgbf3fd43"><span class="section-number-3">4.1.</span> Delinquency</h3>
+<div id="outline-container-orgac7b7ce" class="outline-3">
+<h3 id="orgac7b7ce"><span class="section-number-3">4.1.</span> Delinquency</h3>
 <div class="outline-text-3" id="text-4-1">
 <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1hPP7&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
 </div>
 </div>
 </div>
 
-
-<div id="outline-container-org73c351e" class="outline-2">
-<h2 id="org73c351e"><span class="section-number-2">5.</span> CMOs</h2>
+<div id="outline-container-orgf53d7aa" class="outline-2">
+<h2 id="orgf53d7aa"><span class="section-number-2">5.</span> Mortgage Risk</h2>
 <div class="outline-text-2" id="text-5">
+<p>
+If you own mortgages (own means you are the <i>lender</i>), there are generally 3 types of risk to your investment: (1) interest rate, (2) default and (3) prepayment risk.  We have previously covered interest rate and default risk, however prepayment risk is new and somewhat unique to mortgages.
+</p>
+</div>
+
+<div id="outline-container-orgd6d5baa" class="outline-3">
+<h3 id="orgd6d5baa"><span class="section-number-3">5.1.</span> Interest Rate Risk</h3>
+</div>
+
+
+<div id="outline-container-org1e50a9c" class="outline-3">
+<h3 id="org1e50a9c"><span class="section-number-3">5.2.</span> Default Risk</h3>
+</div>
+
+
+<div id="outline-container-orgc231747" class="outline-3">
+<h3 id="orgc231747"><span class="section-number-3">5.3.</span> Prepayment Risk</h3>
+</div>
+</div>
+
+
+
+<div id="outline-container-org1039014" class="outline-2">
+<h2 id="org1039014"><span class="section-number-2">6.</span> Mortgage Backed Securities</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org3b7c76e" class="outline-3">
+<h3 id="org3b7c76e"><span class="section-number-3">6.1.</span> CMOs</h3>
+<div class="outline-text-3" id="text-6-1">
 <p>
 <a href="https://www.finra.org/finra-data/fixed-income/about-cmo-data">Data on CMOs are available from FINRA here.</a>
 </p>
 </div>
 </div>
 </div>
+</div>
 <div id="postamble" class="status">
 <p class="author">Author: Matt Brigida, Ph.D.</p>
-<p class="date">Created: 2024-03-19 Tue 12:26</p>
+<p class="date">Created: 2024-03-20 Wed 11:39</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

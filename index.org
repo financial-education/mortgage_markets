@@ -47,8 +47,23 @@ The purchase or building of Commercial Properties (such as office buildings) can
 <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1hPP7&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
 #+end_export
 
+* Mortgage Risk
 
-* CMOs
+If you own mortgages (own means you are the /lender/), there are generally 3 types of risk to your investment: (1) interest rate, (2) default and (3) prepayment risk.  We have previously covered interest rate and default risk, however prepayment risk is new and somewhat unique to mortgages.
+
+** Interest Rate Risk
+
+
+** Default Risk
+
+
+** Prepayment Risk
+
+
+
+* Mortgage Backed Securities
+
+** CMOs
 
 [[https://www.finra.org/finra-data/fixed-income/about-cmo-data][Data on CMOs are available from FINRA here.]]
 
