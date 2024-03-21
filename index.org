@@ -77,7 +77,7 @@ Taking a step back, what the CMO has allowed us to do is take a pool of mortgage
 
 ** Interest-Only/Principal-Only
 
-CMOs can also designate tranches as interest-only (IO) or principal-only (PO).  IO tranches only receive interest payments, and POs only principal.  Remember standard fixed-rate mortgage payments are part interest and part principal.
+CMOs can also be stripped into interest-only (IO) or principal-only (PO) securities.  IO securities only receive interest payments, and POs only principal.  Remember standard fixed-rate mortgage payments are part interest and part principal.
 
 IO/PO CMOs are an important tool for banks to manage /prepayment risk/.  Let's say you are exposed to prepayment risk, which means if interest rates decline you will receive the funds you lent back in a lower interest rate environment.  So you want to buy a security that increases in value if prepayments increase.  You can then buy a PO security---if prepayments increase the PO receives its money earlier which increases its value.
 
