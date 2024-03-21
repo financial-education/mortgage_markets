@@ -47,6 +47,12 @@ The purchase or building of Commercial Properties (such as office buildings) can
 <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1hPP7&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
 #+end_export
 
+
+#+begin_quote
+**Extra Credit:** Does credit card delinquency precede mortgage delinquency?  Pull data from FRED and test.
+#+end_quote
+
+
 * Mortgage Risk
 
 If you own mortgages (own means you are the /lender/), there are generally 3 types of risk to your investment: (1) interest rate, (2) default and (3) prepayment risk.  We have previously covered interest rate and default risk, however prepayment risk is new and somewhat unique to mortgages.
@@ -86,4 +92,4 @@ IO/PO CMOs are an important tool for banks to manage /prepayment risk/.  Let's s
 
 * Securitization
 
-See this presentation on securitization.
+[[https://matt-brigida.github.io/securitization-presentation-abridged/][See this presentation on securitization.]]  Note, the presentation navigates both to the right and down.
