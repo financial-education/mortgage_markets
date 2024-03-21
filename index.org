@@ -61,13 +61,29 @@ If you own mortgages (own means you are the /lender/), there are generally 3 typ
 
 
 
-* Mortgage Backed Securities
+* Mortgage Backed Securities (MBS)
 
-** CMOs
+** Example MBS
+
+** Collateralized Mortgage Obligations (CMOs)
+
+Say we have a MBS with an expected overall 10% default rate.  Roughly, for every $10 in principal invested in the security, you expect to lost $1 due to default.  This default rate is fairly high.
+
+However, what if we split this MBS into /tranches/.  The first tranche (tranche A) receives all principal payments until they are repaid their full principal.  Let's say each tranche is 20% of the CMO.  Then for A to not receive its principal in full, more than 80% of the mortgages underlying the CMO must default.  So A is very safe.
+
+Once tranche A is paid, all principal payments will flow to tranche B.  Once B is paid payments flow to tranche C, D, and finally Z (the last tranche is known as the Z-tranche).  In terms of default risk, tranche B is also very safe, C a bit more risky, down to tranche Z which is very risky.  In fact, we expect 50% of Z-tranche to default.
+ 
+Taking a step back, what the CMO has allowed us to do is take a pool of mortgages with moderate risk, and transform this into a set of securities, some of which are very safe, and some very risky.  We do this because investors have different risk preferences---some may want very safe securities and some may want risky (high return) securities.  Thus, we can target investor preferences.
+
+** Interest-Only/Principal-Only
+
+CMOs can also designate tranches as interest-only (IO) or principal-only (PO).  IO tranches only receive interest payments, and POs only principal.  Remember standard fixed-rate mortgage payments are part interest and part principal.
+
+IO/PO CMOs are an important tool for banks to manage /prepayment risk/.  Let's say you are exposed to prepayment risk, which means if interest rates decline you will receive the funds you lent back in a lower interest rate environment.  So you want to buy a security that increases in value if prepayments increase.  You can then buy a PO security---if prepayments increase the PO receives its money earlier which increases its value.
 
 [[https://www.finra.org/finra-data/fixed-income/about-cmo-data][Data on CMOs are available from FINRA here.]]
 
 
+* Securitization
 
-
-
+See this presentation on securitization.

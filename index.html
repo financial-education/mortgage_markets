@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-03-20 Wed 11:39 -->
+<!-- 2024-03-21 Thu 14:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mortgage Markets</title>
@@ -24,26 +24,29 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2afa11a">1. Fixed-Rate Mortgages</a></li>
-<li><a href="#org4ee4118">2. Agency and Government Sponsored Entity Mortgage Pools</a></li>
-<li><a href="#orga1c102d">3. Commercial Mortgages</a></li>
-<li><a href="#orge1fc840">4. FRED Mortgage Data</a>
+<li><a href="#org769a3a1">1. Fixed-Rate Mortgages</a></li>
+<li><a href="#orga105166">2. Agency and Government Sponsored Entity Mortgage Pools</a></li>
+<li><a href="#org3ebc950">3. Commercial Mortgages</a></li>
+<li><a href="#org17a6176">4. FRED Mortgage Data</a>
 <ul>
-<li><a href="#orgac7b7ce">4.1. Delinquency</a></li>
+<li><a href="#orgc975ee9">4.1. Delinquency</a></li>
 </ul>
 </li>
-<li><a href="#orgf53d7aa">5. Mortgage Risk</a>
+<li><a href="#org29baa40">5. Mortgage Risk</a>
 <ul>
-<li><a href="#orgd6d5baa">5.1. Interest Rate Risk</a></li>
-<li><a href="#org1e50a9c">5.2. Default Risk</a></li>
-<li><a href="#orgc231747">5.3. Prepayment Risk</a></li>
+<li><a href="#org69402bc">5.1. Interest Rate Risk</a></li>
+<li><a href="#orgb79288a">5.2. Default Risk</a></li>
+<li><a href="#orge41299e">5.3. Prepayment Risk</a></li>
 </ul>
 </li>
-<li><a href="#org1039014">6. Mortgage Backed Securities</a>
+<li><a href="#org1b6426d">6. Mortgage Backed Securities (MBS)</a>
 <ul>
-<li><a href="#org3b7c76e">6.1. CMOs</a></li>
+<li><a href="#org1fe253a">6.1. Example MBS</a></li>
+<li><a href="#org6093b44">6.2. Collateralized Mortgage Obligations (CMOs)</a></li>
+<li><a href="#org080545b">6.3. Interest-Only/Principal-Only</a></li>
 </ul>
 </li>
+<li><a href="#org65dcfef">7. Securitization</a></li>
 </ul>
 </div>
 </div>
@@ -63,20 +66,20 @@ The majority of which is 1-4 Family Residential Mortgages:
 
 <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1iykn&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
 
-<div id="outline-container-org2afa11a" class="outline-2">
-<h2 id="org2afa11a"><span class="section-number-2">1.</span> Fixed-Rate Mortgages</h2>
+<div id="outline-container-org769a3a1" class="outline-2">
+<h2 id="org769a3a1"><span class="section-number-2">1.</span> Fixed-Rate Mortgages</h2>
 </div>
 
 
-<div id="outline-container-org4ee4118" class="outline-2">
-<h2 id="org4ee4118"><span class="section-number-2">2.</span> Agency and Government Sponsored Entity Mortgage Pools</h2>
+<div id="outline-container-orga105166" class="outline-2">
+<h2 id="orga105166"><span class="section-number-2">2.</span> Agency and Government Sponsored Entity Mortgage Pools</h2>
 <div class="outline-text-2" id="text-2">
 <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1iyoj&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
 </div>
 </div>
 
-<div id="outline-container-orga1c102d" class="outline-2">
-<h2 id="orga1c102d"><span class="section-number-2">3.</span> Commercial Mortgages</h2>
+<div id="outline-container-org3ebc950" class="outline-2">
+<h2 id="org3ebc950"><span class="section-number-2">3.</span> Commercial Mortgages</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 The purchase or building of Commercial Properties (such as office buildings) can be financed through mortgages as well.  
@@ -87,64 +90,107 @@ The purchase or building of Commercial Properties (such as office buildings) can
 </div>
 
 
-<div id="outline-container-orge1fc840" class="outline-2">
-<h2 id="orge1fc840"><span class="section-number-2">4.</span> FRED Mortgage Data</h2>
+<div id="outline-container-org17a6176" class="outline-2">
+<h2 id="org17a6176"><span class="section-number-2">4.</span> FRED Mortgage Data</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 <a href="https://fred.stlouisfed.org/tags/series?t=mortgage">All series matching "mortgage" are here.</a>
 </p>
 </div>
 
-<div id="outline-container-orgac7b7ce" class="outline-3">
-<h3 id="orgac7b7ce"><span class="section-number-3">4.1.</span> Delinquency</h3>
+<div id="outline-container-orgc975ee9" class="outline-3">
+<h3 id="orgc975ee9"><span class="section-number-3">4.1.</span> Delinquency</h3>
 <div class="outline-text-3" id="text-4-1">
 <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1hPP7&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf53d7aa" class="outline-2">
-<h2 id="orgf53d7aa"><span class="section-number-2">5.</span> Mortgage Risk</h2>
+<div id="outline-container-org29baa40" class="outline-2">
+<h2 id="org29baa40"><span class="section-number-2">5.</span> Mortgage Risk</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 If you own mortgages (own means you are the <i>lender</i>), there are generally 3 types of risk to your investment: (1) interest rate, (2) default and (3) prepayment risk.  We have previously covered interest rate and default risk, however prepayment risk is new and somewhat unique to mortgages.
 </p>
 </div>
 
-<div id="outline-container-orgd6d5baa" class="outline-3">
-<h3 id="orgd6d5baa"><span class="section-number-3">5.1.</span> Interest Rate Risk</h3>
+<div id="outline-container-org69402bc" class="outline-3">
+<h3 id="org69402bc"><span class="section-number-3">5.1.</span> Interest Rate Risk</h3>
 </div>
 
 
-<div id="outline-container-org1e50a9c" class="outline-3">
-<h3 id="org1e50a9c"><span class="section-number-3">5.2.</span> Default Risk</h3>
+<div id="outline-container-orgb79288a" class="outline-3">
+<h3 id="orgb79288a"><span class="section-number-3">5.2.</span> Default Risk</h3>
 </div>
 
 
-<div id="outline-container-orgc231747" class="outline-3">
-<h3 id="orgc231747"><span class="section-number-3">5.3.</span> Prepayment Risk</h3>
+<div id="outline-container-orge41299e" class="outline-3">
+<h3 id="orge41299e"><span class="section-number-3">5.3.</span> Prepayment Risk</h3>
 </div>
 </div>
 
 
 
-<div id="outline-container-org1039014" class="outline-2">
-<h2 id="org1039014"><span class="section-number-2">6.</span> Mortgage Backed Securities</h2>
+<div id="outline-container-org1b6426d" class="outline-2">
+<h2 id="org1b6426d"><span class="section-number-2">6.</span> Mortgage Backed Securities (MBS)</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org3b7c76e" class="outline-3">
-<h3 id="org3b7c76e"><span class="section-number-3">6.1.</span> CMOs</h3>
-<div class="outline-text-3" id="text-6-1">
+<div id="outline-container-org1fe253a" class="outline-3">
+<h3 id="org1fe253a"><span class="section-number-3">6.1.</span> Example MBS</h3>
+</div>
+
+<div id="outline-container-org6093b44" class="outline-3">
+<h3 id="org6093b44"><span class="section-number-3">6.2.</span> Collateralized Mortgage Obligations (CMOs)</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+Say we have a MBS with an expected overall 10% default rate.  Roughly, for every $10 in principal invested in the security, you expect to lost $1 due to default.  This default rate is fairly high.
+</p>
+
+<p>
+However, what if we split this MBS into <i>tranches</i>.  The first tranche (tranche A) receives all principal payments until they are repaid their full principal.  Let's say each tranche is 20% of the CMO.  Then for A to not receive its principal in full, more than 80% of the mortgages underlying the CMO must default.  So A is very safe.
+</p>
+
+<p>
+Once tranche A is paid, all principal payments will flow to tranche B.  Once B is paid payments flow to tranche C, D, and finally Z (the last tranche is known as the Z-tranche).  In terms of default risk, tranche B is also very safe, C a bit more risky, down to tranche Z which is very risky.  In fact, we expect 50% of Z-tranche to default.
+</p>
+
+<p>
+Taking a step back, what the CMO has allowed us to do is take a pool of mortgages with moderate risk, and transform this into a set of securities, some of which are very safe, and some very risky.  We do this because investors have different risk preferences&#x2014;some may want very safe securities and some may want risky (high return) securities.  Thus, we can target investor preferences.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org080545b" class="outline-3">
+<h3 id="org080545b"><span class="section-number-3">6.3.</span> Interest-Only/Principal-Only</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+CMOs can also designate tranches as interest-only (IO) or principal-only (PO).  IO tranches only receive interest payments, and POs only principal.  Remember standard fixed-rate mortgage payments are part interest and part principal.
+</p>
+
+<p>
+IO/PO CMOs are an important tool for banks to manage <i>prepayment risk</i>.  Let's say you are exposed to prepayment risk, which means if interest rates decline you will receive the funds you lent back in a lower interest rate environment.  So you want to buy a security that increases in value if prepayments increase.  You can then buy a PO security&#x2014;if prepayments increase the PO receives its money earlier which increases its value.
+</p>
+
 <p>
 <a href="https://www.finra.org/finra-data/fixed-income/about-cmo-data">Data on CMOs are available from FINRA here.</a>
 </p>
 </div>
 </div>
 </div>
+
+
+<div id="outline-container-org65dcfef" class="outline-2">
+<h2 id="org65dcfef"><span class="section-number-2">7.</span> Securitization</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+See this presentation on securitization.
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Matt Brigida, Ph.D.</p>
-<p class="date">Created: 2024-03-20 Wed 11:39</p>
+<p class="date">Created: 2024-03-21 Thu 14:59</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
