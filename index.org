@@ -7,7 +7,7 @@
 
 Mortgages are loans collateralized by real property.  Mortgages are used in the purchase of most single family homes in the US.  Because the US has determined increased home ownership is in the public interest, Federal and State governments subsidize mortgage markets.
 
-There is presently (march 2024) over 20 trillion of mortgage debt outstanding:
+There is presently (March 2024) over 20 trillion of mortgage debt outstanding:
 
 #+begin_export html
 <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1iyjw&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
@@ -21,6 +21,11 @@ The majority of which is 1-4 Family Residential Mortgages:
 
 * Fixed-Rate Mortgages
 
+Most mortgages are fixed rate---which means the monthly mortgage payments is the same over the life of the loan.
+
+** Interest vs Principal Payments
+
+** Benefit from Any Move in Rates
 
 * Agency and Government Sponsored Entity Mortgage Pools
 
