@@ -1,6 +1,6 @@
 #+title: Mortgage Markets
 #+author: Matt Brigida, Ph.D.
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+#+SETUPFILE: ~/.emacs.d/org-themes/src/readtheorg_inline/readtheorg_inline.theme
 #+HTML_HEAD: <style>pre.src{background:#343131;color:white;} </style>
 #+PROPERTY: header-args    :exports none
 
@@ -21,11 +21,99 @@ The majority of which is 1-4 Family Residential Mortgages:
 
 * Fixed-Rate Mortgages
 
-Most mortgages are fixed rate---which means the monthly mortgage payments is the same over the life of the loan.
+Most mortgages are fixed rate---which means the monthly mortgage payment is the same over the life of the loan.  The interest rate is set at origination and never changes regardless of market conditions.
 
 ** Interest vs Principal Payments
 
+*** Amortization Table
+
+The monthly payment on a fixed-rate mortgage is determined by the present value of an annuity formula:
+
+\[PMT = P \cdot \frac{r(1+r)^n}{(1+r)^n - 1}\]
+
+where \(P\) is the loan principal, \(r\) is the monthly interest rate (annual rate / 12), and \(n\) is the total number of payments (years × 12).
+
+*Example:* Consider a $300,000 30-year mortgage at 7% annual interest:
+- Monthly rate: \(r = 7\%/12 = 0.5833\%\)
+- Number of payments: \(n = 360\)
+- Monthly payment: \(PMT \approx \$1,996\)
+
+Each payment covers the interest owed on the remaining balance, with the remainder reducing the principal.  Early in the loan, most of the payment is interest; over time the principal portion grows.
+
+| Month | Payment    | Interest   | Principal  | Balance        |
+|-------|------------|------------|------------|----------------|
+|     1 | $1,995.91  | $1,750.00  | $245.91    | $299,754.09    |
+|     2 | $1,995.91  | $1,748.57  | $247.34    | $299,506.75    |
+|     3 | $1,995.91  | $1,747.12  | $248.79    | $299,257.96    |
+|   120 | $1,995.91  | $1,617.67  | $378.24    | $277,198.73    |
+|   180 | $1,995.91  | $1,274.46  | $721.45    | $218,477.54    |
+|   240 | $1,995.91  | $  851.31  | $1,144.60  | $145,882.70    |
+|   360 | $1,995.91  | $   11.62  | $1,984.29  | $      0.00    |
+
+Notice that in month 1, nearly 88% of the payment ($1,750 / $1,996) is interest.  By month 240 (year 20), only about 43% is interest.  This front-loading of interest is a consequence of the amortization structure and has important tax implications for borrowers who deduct mortgage interest.
+
+Over the full 30-year life of this loan, the borrower pays:
+- Total payments: 360 × $1,995.91 = $718,527.60
+- Total interest paid: $418,527.60 (more than the original loan amount)
+
 ** Benefit from Any Move in Rates
+
+A key feature of fixed-rate mortgages is that they embed a valuable *option* for the borrower.
+
+- *If rates fall:* The borrower can /refinance/---take out a new mortgage at the lower prevailing rate and use the proceeds to pay off the existing mortgage.  The borrower effectively has a call option to retire the debt at par whenever it is advantageous to do so.
+- *If rates rise:* The borrower is locked in at the original lower rate, which is now below the market rate.  The borrower benefits relative to someone who would have to borrow at the new higher rate.
+
+This asymmetry---gain if rates fall, protection if rates rise---means the fixed-rate mortgage borrower is always in a favorable position relative to the market.  From the /lender's/ perspective, this embedded option is a cost: they face *prepayment risk* when rates fall and hold low-yielding assets when rates rise.  This contributes to the *negative convexity* of mortgage-backed securities discussed below.
+
+* Adjustable-Rate Mortgages (ARMs)
+
+In contrast to fixed-rate mortgages, adjustable-rate mortgages (ARMs) have interest rates that reset periodically based on a reference rate (historically LIBOR, now SOFR) plus a fixed spread called the *margin*.
+
+** ARM Structure
+
+A common ARM structure is the *5/1 ARM*:
+- The rate is fixed for the first 5 years
+- After year 5, the rate resets annually based on the index + margin
+- ARMs typically include *rate caps* to limit changes:
+  - *Periodic cap:* limits the change at each reset (e.g., ±2% per year)
+  - *Lifetime cap:* limits the total change over the life of the loan (e.g., ±5% from the initial rate)
+
+** Who Benefits from ARMs?
+
+ARMs typically offer a lower initial rate than fixed-rate mortgages, called the *teaser rate*.  Borrowers benefit from ARMs when:
+
+1. They plan to sell or refinance before the initial fixed period ends
+2. They expect interest rates to fall
+3. They need a lower initial payment to qualify for a larger loan
+
+Lenders benefit because the interest rate risk is shifted to the borrower.  However, this can increase *default risk*---borrowers who stretched to afford the teaser payment may default when the rate resets upward.  This dynamic was a central cause of the 2007-2008 financial crisis.
+
+* Mortgage Origination
+
+Before a mortgage can be sold or securitized, it must be originated.  The origination process involves the lender assessing the creditworthiness of the borrower and the value of the collateral (property appraisal).
+
+** Key Underwriting Criteria
+
+- *Loan-to-Value (LTV) Ratio:* The loan amount divided by the appraised property value.  A lower LTV means the borrower has more equity and the lender has more collateral cushion.  LTV > 80% typically requires the borrower to purchase *Private Mortgage Insurance (PMI)*, which protects the lender (not the borrower) against default losses.
+
+- *Credit Score (FICO):* Scores range from 300-850.  Most conventional mortgages require a score of at least 620; prime borrowers typically have scores above 740.  *Subprime* mortgages are made to borrowers with scores below roughly 620 and carry higher interest rates to compensate for the elevated default risk.
+
+- *Debt-to-Income (DTI) Ratio:* Total monthly debt payments divided by gross monthly income.  Conventional loans typically require a DTI below 43%.  A high DTI signals the borrower may struggle to service the debt.
+
+- *Documentation:* Full-documentation loans verify income and assets through tax returns, pay stubs, and bank statements.  "Stated income" or "no-doc" loans (where borrowers self-reported income without verification) were common pre-2008 and contributed to the financial crisis by allowing fraudulent applications.
+
+** Loan Types
+
+| Type        | Insurer/Guarantor          | Key Features                                         |
+|-------------|----------------------------|------------------------------------------------------|
+| Conventional| None (or PMI if LTV > 80%) | Must conform to GSE guidelines to be sold to Fannie/Freddie |
+| FHA         | Federal Housing Admin.     | Down payment as low as 3.5%; lower credit threshold  |
+| VA          | Dept. of Veterans Affairs  | No down payment required for eligible veterans       |
+| Jumbo       | None                       | Exceeds conforming loan limits; higher interest rates|
+
+** Conforming Loans
+
+To be sold to Fannie Mae or Freddie Mac, a loan must be *conforming*---it must meet limits on loan size (the conforming loan limit, which adjusts annually; $766,550 for most areas in 2024), LTV, DTI, documentation, and borrower credit quality.  Non-conforming loans (including jumbo loans) must be held on the originating bank's balance sheet or sold to private investors at a discount.
 
 * Agency and Government Sponsored Entity Mortgage Pools
 
@@ -33,14 +121,38 @@ Most mortgages are fixed rate---which means the monthly mortgage payments is the
 <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1iyoj&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
 #+end_export
 
+After origination, banks typically sell mortgages into the *secondary mortgage market* rather than holding them on their balance sheets.  This "originate-to-distribute" model frees up capital for new lending and allows a much larger volume of mortgages to be funded than the banking system alone could support.  Three major entities are central to this market:
+
+** Ginnie Mae (GNMA)
+
+The Government National Mortgage Association is a true government agency (part of HUD).  Ginnie Mae guarantees MBS backed by FHA- and VA-insured loans.  Its guarantee is backed by the *full faith and credit of the U.S. government*, making Ginnie Mae MBS essentially free of credit risk.
+
+** Fannie Mae (FNMA)
+
+The Federal National Mortgage Association is a *Government-Sponsored Enterprise (GSE)*---a shareholder-owned corporation created by Congress with an implicit government guarantee.  Fannie Mae purchases conforming conventional mortgages from lenders, pools them, and issues MBS.  It was placed into government conservatorship in September 2008 during the financial crisis after suffering catastrophic losses on subprime mortgage exposure.
+
+** Freddie Mac (FHLMC)
+
+The Federal Home Loan Mortgage Corporation is also a GSE with a similar mandate to Fannie Mae.  Congress created it in 1970 to provide competition to Fannie Mae and expand the secondary mortgage market.  Freddie Mac was likewise placed into conservatorship in 2008.
+
+** The Agency MBS Market
+
+Agency MBS (issued or guaranteed by Ginnie, Fannie, or Freddie) are among the most liquid fixed-income securities in the world, second only to U.S. Treasury securities.  They carry an implicit (Fannie/Freddie) or explicit (Ginnie) government guarantee against default, so investors focus primarily on *prepayment risk* rather than default risk when pricing them.
+
 * Commercial Mortgages
 
-The purchase or building of Commercial Properties (such as office buildings) can be financed through mortgages as well.  
+The purchase or building of Commercial Properties (such as office buildings) can be financed through mortgages as well.
 
 #+begin_export html
 <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1iykI&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
 #+end_export
 
+Commercial mortgages differ from residential mortgages in several important ways.  They are typically shorter-term (5-10 years) with *balloon payments* at maturity, and their underwriting focuses on the income-generating capacity of the property rather than the borrower's personal income.  Key metrics include:
+
+- *Debt Service Coverage Ratio (DSCR):* Net operating income / annual debt service.  Lenders typically require DSCR > 1.25.
+- *Cap Rate:* The property's net operating income divided by its market value, analogous to a yield.
+
+Commercial Mortgage-Backed Securities (CMBS) pool these loans into tradeable securities.  CMBS markets experienced significant stress in 2020 (COVID reduced cash flows for retail and office properties) and again in 2023-2024 as rising interest rates made refinancing at balloon maturity difficult.
 
 * FRED Mortgage Data
 
@@ -54,7 +166,7 @@ The purchase or building of Commercial Properties (such as office buildings) can
 
 
 #+begin_quote
-**Extra Credit:** Does credit card delinquency precede mortgage delinquency?  Pull data from FRED and test.
+*Extra Credit:* Does credit card delinquency precede mortgage delinquency?  Pull data from FRED and test.
 #+end_quote
 
 
@@ -64,17 +176,103 @@ If you own mortgages (own means you are the /lender/), there are generally 3 typ
 
 ** Interest Rate Risk
 
+Like any fixed-income instrument, mortgages lose value when interest rates rise and gain value when rates fall.  This price sensitivity is measured by *duration*.
+
+A 30-year fixed-rate mortgage has a stated maturity of 30 years, but because borrowers make monthly principal payments (amortization) and can prepay at any time, its *effective duration* is much shorter---typically 5-10 years under normal rate conditions.
+
+More importantly, mortgages exhibit *negative convexity*, which makes them unusual among fixed-income instruments:
+
+- When rates *fall*, borrowers refinance (prepay early), shortening the mortgage's effective duration just when the lender would prefer longer duration to benefit from rising prices.  The lender receives their principal back and must reinvest at the now-lower market rates.
+- When rates *rise*, borrowers hold on to their below-market fixed-rate mortgages longer, extending the effective duration just when the lender would prefer shorter duration.
+
+This "worst of both worlds" behavior for the lender means the price appreciation a mortgage investor earns when rates fall is less than a comparable straight bond, while the price decline when rates rise is similar.  The chart below illustrates the concept:
+
+#+begin_example
+Price
+  |        Standard bond (positive convexity)
+  |       /
+  |      /
+  |     /  Mortgage (negative convexity)
+  |    / /
+  |   //
+  |  /
+  | /
+  +--------------------------> Yield (falls to the right)
+#+end_example
+
+Banks and thrift institutions holding large portfolios of fixed-rate mortgages are significantly exposed to this risk.  The failure of many savings and loan (S&L) institutions in the 1980s was largely due to this mismatch: they had funded long-duration fixed-rate mortgages with short-term deposits during a period of sharply rising rates.
 
 ** Default Risk
 
+Default risk is the risk that a borrower stops making mortgage payments.  If the borrower defaults, the lender initiates *foreclosure* and takes possession of the property.  The lender's ultimate loss (the *loss given default*) depends on:
+
+1. *Equity at default:* If the property value has fallen below the loan balance (the borrower is "underwater," i.e., LTV > 100%), the lender will not recover the full outstanding principal even after foreclosure.
+2. *Time in foreclosure:* The process can take months to years depending on the state.  During this time the lender receives no payments and the property may deteriorate.
+3. *Distressed sale price:* Foreclosed properties typically sell at a discount to market value.
+
+Key predictors of default risk:
+- High LTV ratio (especially > 100%)
+- Low FICO credit score
+- High DTI ratio
+- ARM loans resetting to higher payments
+- Weak local labor market conditions
+
+The 2007-2008 financial crisis was triggered by widespread defaults on *subprime mortgages*---loans made to borrowers with poor credit, high LTV ratios, limited documentation, and often teaser-rate ARMs scheduled to reset sharply upward.  When U.S. home prices declined nationally for the first time since the Great Depression, millions of borrowers found themselves with negative equity and defaulted, causing losses that rippled through the entire global financial system.
 
 ** Prepayment Risk
 
+Prepayment risk is the risk that the borrower repays principal earlier than the scheduled amortization requires.  Common causes include:
 
+- *Refinancing:* The most important driver.  When market rates fall significantly below the borrower's note rate (typically by 1.5–2 percentage points), refinancing becomes financially attractive.  This creates a strong negative relationship between interest rates and prepayment speeds.
+- *Home sale:* Most mortgages contain a *due-on-sale clause* requiring full repayment when the property is sold.
+- *Curtailments:* Voluntary extra principal payments above the scheduled amount.
+- *Default and foreclosure:* Results in full or partial principal recovery ahead of schedule.
+
+*** Measuring Prepayment Speed
+
+The industry standard is the *PSA (Public Securities Association) prepayment model*:
+
+- *100% PSA* assumes prepayment speeds (measured as the Conditional Prepayment Rate, or CPR) start at 0.2% in month 1, increase by 0.2% per month, and plateau at 6% CPR after month 30 (when the pool is considered "seasoned").
+- A faster-prepaying pool is quoted as a percentage of PSA: *200% PSA* means prepayment speeds are twice the benchmark; *50% PSA* means half.
+- CPR is the annualized fraction of the remaining pool balance expected to prepay in a given month.
+
+*** Why Prepayment Risk Matters to Investors
+
+Prepayment risk is problematic for mortgage investors because of *reinvestment risk*: principal is returned at exactly the moment when interest rates are low (since refinancing is the dominant prepayment cause).  The investor must then reinvest at these lower rates, reducing portfolio yield.
+
+Prepayment risk is also the source of mortgage *negative convexity* discussed above under Interest Rate Risk: the price appreciation of an MBS when rates fall is limited because increasing prepayments return principal at par, capping the bond's upside.
 
 * Mortgage Backed Securities (MBS)
 
+Mortgages can be pooled together and used as collateral for securities---*Mortgage-Backed Securities (MBS)*, also called *pass-through securities*.  This process, called *securitization*, allows the mortgage market to tap global capital markets for funding and frees up bank balance sheets for new lending.
+
 ** Example MBS
+
+Consider a pool of 1,000 mortgages, each with:
+- Principal balance: $300,000
+- Interest rate: 7%
+- Term: 30 years
+
+The total pool balance is $300 million.  An MBS is issued where investors purchase /certificates/ representing a pro-rata share of all cash flows from the 1,000 underlying mortgages.  If you own 1% of the MBS, you receive 1% of every principal and interest dollar paid by the borrowers.
+
+#+begin_example
+Borrowers ──────────────────────────────────────────────► MBS Investors
+ (monthly P+I payments)   [Mortgage Servicer collects,     (pass-through P+I,
+                            remits net of fees]              net of fees)
+#+end_example
+
+The *pass-through rate* (the rate paid to MBS investors) is slightly below the mortgage coupon rate:
+
+| Component         | Rate   |
+|-------------------|--------|
+| Mortgage rate     | 7.00%  |
+| Servicing fee     | 0.25%  |
+| Guarantee fee     | 0.25%  |
+| Pass-through rate | 6.50%  |
+
+*** The Benefit of Pooling
+
+Pooling a large number of mortgages diversifies *idiosyncratic default risk*---while any individual borrower might default, the aggregate pool default rate is more predictable.  Pooling also creates a more *liquid and standardized* instrument attractive to large institutional investors (pension funds, insurance companies, foreign central banks) who would not purchase individual mortgages.
 
 ** Collateralized Mortgage Obligations (CMOs)
 
@@ -83,14 +281,26 @@ Say we have a MBS with an expected overall 10% default rate.  Roughly, for every
 However, what if we split this MBS into /tranches/.  The first tranche (tranche A) receives all principal payments until they are repaid their full principal.  Let's say each tranche is 20% of the CMO.  Then for A to not receive its principal in full, more than 80% of the mortgages underlying the CMO must default.  So A is very safe.
 
 Once tranche A is paid, all principal payments will flow to tranche B.  Once B is paid payments flow to tranche C, D, and finally Z (the last tranche is known as the Z-tranche).  In terms of default risk, tranche B is also very safe, C a bit more risky, down to tranche Z which is very risky.  In fact, we expect 50% of Z-tranche to default.
- 
+
 Taking a step back, what the CMO has allowed us to do is take a pool of mortgages with moderate risk, and transform this into a set of securities, some of which are very safe, and some very risky.  We do this because investors have different risk preferences---some may want very safe securities and some may want risky (high return) securities.  Thus, we can target investor preferences.
+
+*** CMO Tranches and Credit Ratings
+
+The senior tranches (A, B) of a CMO can achieve *investment-grade credit ratings* (AAA, AA) even when the underlying collateral contains subprime mortgages, because losses are absorbed by junior tranches first.  This credit enhancement mechanism was central to the 2008 financial crisis: rating agencies assigned AAA ratings to CMO tranches backed by subprime mortgages, underestimating the correlation of defaults across borrowers during a nationwide housing downturn.  When defaults proved far higher than modeled, even senior tranches suffered losses.
 
 ** Interest-Only/Principal-Only
 
 CMOs can also be stripped into interest-only (IO) or principal-only (PO) securities.  IO securities only receive interest payments, and POs only principal.  Remember standard fixed-rate mortgage payments are part interest and part principal.
 
 IO/PO CMOs are an important tool for banks to manage /prepayment risk/.  Let's say you are exposed to prepayment risk, which means if interest rates decline you will receive the funds you lent back in a lower interest rate environment.  So you want to buy a security that increases in value if prepayments increase.  You can then buy a PO security---if prepayments increase the PO receives its money earlier which increases its value.
+
+*** IO and PO Interest Rate Sensitivities
+
+IO and PO securities have unusual and asymmetric sensitivities to interest rates:
+
+- *PO strips* receive only principal payments.  When prepayments accelerate (rates fall), the PO receives its money sooner, which at a lower discount rate is more valuable.  PO prices *rise* when rates fall---similar to a standard bond but amplified.
+
+- *IO strips* receive only interest payments.  When prepayments accelerate (rates fall), the outstanding pool balance shrinks faster and there is less principal on which to earn interest---the IO loses cash flows.  IO prices can *fall* when rates fall, giving IOs one of the few fixed-income instruments with *negative duration*.  This makes IO strips a powerful hedge for institutions exposed to prepayment risk.
 
 [[https://www.finra.org/finra-data/fixed-income/about-cmo-data][Data on CMOs are available from FINRA here.]]
 
